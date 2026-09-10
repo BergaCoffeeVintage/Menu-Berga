@@ -1,298 +1,547 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#00563f">
-  <meta name="description" content="Reservasi Berga Coffee — Vintage and Timeless.">
-  <title>Reservation | Berga Coffee</title>
-  <link rel="icon" type="image/png" href="assets/berga-favicon.png">
-  <link rel="stylesheet" href="style.css">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#00563f"
+  >
+
+  <meta
+    name="description"
+    content="Reservasi Berga Coffee — Vintage and Timeless."
+  >
+
+  <title>
+    Reservation | Berga Coffee
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/berga-favicon.png"
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
+
+
 <body>
+
+
+<!-- ==========================================
+     NAVBAR
+     ========================================== -->
+
 <header class="topbar">
-  <a class="brand" href="index.html" aria-label="Berga Coffee"><span><strong>berga.</strong><small>coffee</small></span></a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Buka navigasi" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
+
+  <a
+    class="brand"
+    href="index.html"
+    aria-label="Berga Coffee"
+  >
+
+    <span>
+
+      <strong>
+        berga.
+      </strong>
+
+      <small>
+        coffee
+      </small>
+
+    </span>
+
+  </a>
+
+
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    aria-label="Buka navigasi"
+    aria-expanded="false"
+    type="button"
+  >
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+
   <nav id="nav">
-    <a href="index.html">HOME</a>
-    <a href="index.html#our-story">ABOUT US</a>
-    <a href="about.html#menu">MENU</a>
-    <a href="reservation.html" class="reservation-link active">RESERVASI</a>
-    <button id="fullscreenBtn" type="button">FULLSCREEN</button>
+
+    <a href="index.html">
+      HOME
+    </a>
+
+    <a href="index.html#our-story">
+      ABOUT US
+    </a>
+
+    <a href="about.html#menu">
+      MENU
+    </a>
+
+    <a
+      href="reservation.html"
+      class="reservation-link active"
+    >
+      RESERVASI
+    </a>
+
+    <button
+      id="fullscreenBtn"
+      type="button"
+    >
+      FULLSCREEN
+    </button>
+
   </nav>
+
 </header>
+
+
+
+<!-- ==========================================
+     MAIN
+     ========================================== -->
+
 <main>
-    <!-- =========================
-         RESERVATION SECTION
-         ========================= -->
 
-    <section class="reservation-section" id="reservation">
 
-      <div class="reservation-container">
+  <!-- ========================================
+       RESERVATION
+       ======================================== -->
 
-        <div class="reservation-heading">
+  <section
+    class="reservation-section"
+    id="reservation"
+  >
 
-          <span>BERGA COFFEE</span>
 
-          <h2>
-            MAKE A<br>
-            RESERVATION
-          </h2>
+    <div class="reservation-container">
 
-          <p>
-            Reserve your table and enjoy your time
-            at Berga Coffee.
-          </p>
+
+      <!-- HEADING -->
+
+      <div class="reservation-heading">
+
+        <span>
+          BERGA COFFEE
+        </span>
+
+        <h2>
+          MAKE A<br>
+          RESERVATION
+        </h2>
+
+        <p>
+          Reserve your table and enjoy your time
+          at Berga Coffee.
+        </p>
+
+      </div>
+
+
+
+      <!-- ====================================
+           FORM RESERVASI
+           ==================================== -->
+
+      <form
+        id="reservationForm"
+        class="reservation-form"
+      >
+
+
+        <!-- ==============================
+             NAMA
+             ============================== -->
+
+        <div class="form-group">
+
+          <label for="guestName">
+            NAMA
+          </label>
+
+          <input
+            type="text"
+            id="guestName"
+            name="guestName"
+            placeholder="Masukkan nama lengkap"
+            required
+          >
 
         </div>
 
 
-        <!-- FORM RESERVASI -->
 
-        <form id="reservationForm" class="reservation-form">
+        <!-- ==============================
+             NOMOR WHATSAPP
+             ============================== -->
 
-          <!-- Nama -->
+        <div class="form-group">
 
-          <div class="form-group">
+          <label for="guestPhone">
+            NOMOR WHATSAPP
+          </label>
 
-            <label for="guestName">
-              NAMA
+          <input
+            type="tel"
+            id="guestPhone"
+            name="guestPhone"
+            placeholder="Contoh: 081234567890"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- ==============================
+             HARI
+             ============================== -->
+
+        <div class="form-group">
+
+          <label for="reservationDay">
+            HARI
+          </label>
+
+          <select
+            id="reservationDay"
+            name="reservationDay"
+            required
+          >
+
+            <option value="">
+              Pilih hari
+            </option>
+
+            <option value="Senin">
+              Senin
+            </option>
+
+            <option value="Selasa">
+              Selasa
+            </option>
+
+            <option value="Rabu">
+              Rabu
+            </option>
+
+            <option value="Kamis">
+              Kamis
+            </option>
+
+            <option value="Jumat">
+              Jumat
+            </option>
+
+            <option value="Sabtu">
+              Sabtu
+            </option>
+
+            <option value="Minggu">
+              Minggu
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- ==============================
+             TANGGAL
+             ============================== -->
+
+        <div class="form-group">
+
+          <label for="reservationDate">
+            TANGGAL
+          </label>
+
+          <input
+            type="date"
+            id="reservationDate"
+            name="reservationDate"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- ==============================
+             JAM
+             ============================== -->
+
+        <div class="form-group">
+
+          <label for="reservationTime">
+            JAM
+          </label>
+
+          <input
+            type="time"
+            id="reservationTime"
+            name="reservationTime"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- ==============================
+             RUANGAN
+             ============================== -->
+
+        <div class="form-group">
+
+          <label for="room">
+            RUANGAN
+          </label>
+
+          <select
+            id="room"
+            name="room"
+            required
+          >
+
+            <option value="">
+              Pilih ruangan
+            </option>
+
+            <option value="Indoor">
+              Indoor
+            </option>
+
+            <option value="Outdoor">
+              Outdoor
+            </option>
+
+            <option value="Private Room">
+              Private Room
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- ==============================
+             JENIS ACARA
+             ============================== -->
+
+        <div class="form-group">
+
+          <label for="eventType">
+            JENIS ACARA
+          </label>
+
+          <select
+            id="eventType"
+            name="eventType"
+            required
+          >
+
+            <option value="">
+              Pilih jenis acara
+            </option>
+
+            <option value="Bridal Shower">
+              Bridal Shower
+            </option>
+
+            <option value="BTS">
+              BTS
+            </option>
+
+            <option value="Prewed">
+              Prewed
+            </option>
+
+            <option value="Birthday Party">
+              Birthday Party
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- ==============================
+             JUMLAH ORANG
+             ============================== -->
+
+        <div class="form-group">
+
+          <label for="guestCount">
+            JUMLAH ORANG
+          </label>
+
+          <input
+            type="number"
+            id="guestCount"
+            name="guestCount"
+            min="1"
+            placeholder="Contoh: 4"
+            required
+          >
+
+        </div>
+
+
+
+        <!-- ==============================
+             CATATAN
+             ============================== -->
+
+        <div class="form-group full-width">
+
+          <label for="notes">
+            CATATAN TAMBAHAN
+          </label>
+
+          <textarea
+            id="notes"
+            name="notes"
+            rows="4"
+            placeholder="Contoh: Request meja dekat jendela, dekorasi ulang tahun, dan lainnya..."
+          ></textarea>
+
+        </div>
+
+
+
+        <!-- ==============================
+             ADMIN RESERVASI
+             ============================== -->
+
+        <div class="form-group full-width">
+
+          <label>
+            PILIH ADMIN RESERVASI
+          </label>
+
+
+          <div class="admin-options">
+
+
+            <!-- ADMIN 1 -->
+
+            <label class="admin-option">
+
+              <input
+                type="radio"
+                name="admin"
+                value="6287722493288"
+                required
+              >
+
+              <span>
+                ADMIN 1
+              </span>
+
             </label>
 
-            <input
-              type="text"
-              id="guestName"
-              name="guestName"
-              placeholder="Masukkan nama lengkap"
-              required
-            >
-
-          </div>
 
 
-          <!-- Nomor WhatsApp -->
+            <!-- ADMIN 2 -->
 
-          <div class="form-group">
+            <label class="admin-option">
 
-            <label for="guestPhone">
-              NOMOR WHATSAPP
+              <input
+                type="radio"
+                name="admin"
+                value="6281389962021"
+              >
+
+              <span>
+                ADMIN 2
+              </span>
+
             </label>
 
-            <input
-              type="tel"
-              id="guestPhone"
-              name="guestPhone"
-              placeholder="Contoh: 081234567890"
-              required
-            >
 
           </div>
 
+        </div>
 
-          <!-- Hari -->
 
-          <div class="form-group">
 
-            <label for="reservationDay">
-              HARI
-            </label>
+        <!-- ==============================
+             SUBMIT
+             ============================== -->
 
-            <select
-              id="reservationDay"
-              name="reservationDay"
-              required
-            >
+        <div class="form-submit full-width">
 
-              <option value="">
-                Pilih hari
-              </option>
+          <button
+            type="submit"
+            class="reservation-submit"
+          >
+            KIRIM RESERVASI →
+          </button>
 
-              <option>Senin</option>
-              <option>Selasa</option>
-              <option>Rabu</option>
-              <option>Kamis</option>
-              <option>Jumat</option>
-              <option>Sabtu</option>
-              <option>Minggu</option>
+        </div>
 
-            </select>
 
-          </div>
+      </form>
 
+    </div>
 
-          <!-- Tanggal -->
-
-          <div class="form-group">
-
-            <label for="reservationDate">
-              TANGGAL
-            </label>
-
-            <input
-              type="date"
-              id="reservationDate"
-              name="reservationDate"
-              required
-            >
-
-          </div>
-
-
-          <!-- Jam -->
-
-          <div class="form-group">
-
-            <label for="reservationTime">
-              JAM
-            </label>
-
-            <input
-              type="time"
-              id="reservationTime"
-              name="reservationTime"
-              required
-            >
-
-          </div>
-
-
-          <!-- Ruangan -->
-
-          <div class="form-group">
-
-            <label for="room">
-              RUANGAN
-            </label>
-
-            <select
-              id="room"
-              name="room"
-              required
-            >
-
-              <option value="">
-                Pilih ruangan
-              </option>
-
-              <option value="Indoor">
-                Indoor
-              </option>
-
-              <option value="Outdoor">
-                Outdoor
-              </option>
-
-              <option value="Private Room">
-                Private Room
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <!-- Jumlah Orang -->
-
-          <div class="form-group">
-
-            <label for="guestCount">
-              JUMLAH ORANG
-            </label>
-
-            <input
-              type="number"
-              id="guestCount"
-              name="guestCount"
-              min="1"
-              placeholder="Contoh: 4"
-              required
-            >
-
-          </div>
-
-
-          <!-- Catatan -->
-
-          <div class="form-group full-width">
-
-            <label for="notes">
-              CATATAN TAMBAHAN
-            </label>
-
-            <textarea
-              id="notes"
-              name="notes"
-              rows="4"
-              placeholder="Contoh: Request meja dekat jendela..."
-            ></textarea>
-
-          </div>
-
-
-          <!-- Admin -->
-
-          <div class="form-group full-width">
-
-            <label>
-              PILIH ADMIN RESERVASI
-            </label>
-
-            <div class="admin-options">
-
-              <label class="admin-option">
-
-                <input
-                  type="radio"
-                  name="admin"
-                  value="6287722493288"
-                  required
-                >
-
-                <span>
-                  ADMIN 1
-                </span>
-
-              </label>
-
-
-              <label class="admin-option">
-
-                <input
-                  type="radio"
-                  name="admin"
-                  value="6281389962021"
-                >
-
-                <span>
-                  ADMIN 2
-                </span>
-
-              </label>
-
-            </div>
-
-          </div>
-
-
-          <!-- Submit -->
-
-          <div class="form-submit full-width">
-
-            <button type="submit" class="reservation-submit">
-              KIRIM RESERVASI →
-            </button>
-
-          </div>
-
-        </form>
-
-      </div>
-
-    </section>
-
+  </section>
 
 </main>
-<footer><div class="footer-line"></div><strong>BERGA COFFEE</strong><span>VINTAGE AND TIMELESS</span></footer>
+
+
+
+<!-- ==========================================
+     FOOTER
+     ========================================== -->
+
+<footer>
+
+  <div class="footer-line"></div>
+
+  <strong>
+    BERGA COFFEE
+  </strong>
+
+  <span>
+    VINTAGE AND TIMELESS
+  </span>
+
+</footer>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT
+     ========================================== -->
+
 <script src="script.js"></script>
+
+
 </body>
+
 </html>
