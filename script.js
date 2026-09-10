@@ -1,3 +1,14 @@
+// ==========================================
+// BERGA COFFEE
+// MAIN JAVASCRIPT
+// ==========================================
+
+
+// ==========================================
+// MENU ASSETS
+// Urutan sesuai menu yang dikirim
+// ==========================================
+
 const pages = [
   {
     file: "assets/09-daytime-specials.jpg",
@@ -9,15 +20,15 @@ const pages = [
   },
   {
     file: "assets/06-black-white-handbrew.jpg",
-    title: "Black · White · Hand Brew Collection"
+    title: "Black Series · White Series · Hand Brew Collection"
   },
   {
     file: "assets/05-matcha-choco-frappe.jpg",
-    title: "Matcha · Choco · Frappe Series"
+    title: "Matcha Series · Choco Series · Frappe Series"
   },
   {
     file: "assets/04-signature-coffee-tea.jpg",
-    title: "Signature Non-Coffee · Coffee · Tea"
+    title: "Signature Non-Coffee · Signature Coffee · Tea Series"
   },
   {
     file: "assets/07-the-kitchen.jpg",
@@ -38,11 +49,12 @@ const pages = [
 ];
 
 
-// ==============================
+// ==========================================
 // MENU PAGES
-// ==============================
+// ==========================================
 
-const pagesEl = document.getElementById("pages");
+const pagesEl =
+  document.getElementById("pages");
 
 const lightbox =
   document.getElementById("lightbox");
@@ -59,46 +71,65 @@ const pageTitle =
 let currentIndex = 0;
 
 
-pages.forEach((page, index) => {
+// Generate menu cards
 
-  const card =
-    document.createElement("article");
+if (pagesEl) {
 
-  card.className = "page-card";
+  pages.forEach((page, index) => {
 
-  card.innerHTML = `
-    <img
-      src="${page.file}"
-      alt="${page.title}"
-      loading="${index < 2 ? "eager" : "lazy"}"
-    >
+    const card =
+      document.createElement("article");
 
-    <span class="page-label">
-      ${String(index + 1).padStart(2, "0")}
-      ·
-      ${page.title}
-    </span>
-  `;
+    card.className = "page-card";
 
-  card.addEventListener("click", () => {
-    openLightbox(index);
+
+    card.innerHTML = `
+      <img
+        src="${page.file}"
+        alt="${page.title}"
+        loading="${index < 2 ? "eager" : "lazy"}"
+      >
+
+      <span class="page-label">
+        ${String(index + 1).padStart(2, "0")}
+        ·
+        ${page.title}
+      </span>
+    `;
+
+
+    card.addEventListener(
+      "click",
+      () => openLightbox(index)
+    );
+
+
+    pagesEl.appendChild(card);
+
   });
 
-  pagesEl.appendChild(card);
-
-});
+}
 
 
-// ==============================
+// ==========================================
 // LIGHTBOX
-// ==============================
+// ==========================================
 
 function openLightbox(index) {
+
+  if (
+    !lightbox ||
+    !lightboxImage
+  ) {
+    return;
+  }
+
 
   currentIndex = index;
 
   const page =
     pages[currentIndex];
+
 
   lightboxImage.src =
     page.file;
@@ -106,164 +137,262 @@ function openLightbox(index) {
   lightboxImage.alt =
     page.title;
 
-  pageNumber.textContent =
-    `Page ${currentIndex + 1} / ${pages.length}`;
 
-  pageTitle.textContent =
-    page.title;
+  if (pageNumber) {
+
+    pageNumber.textContent =
+      `Page ${currentIndex + 1} / ${pages.length}`;
+
+  }
+
+
+  if (pageTitle) {
+
+    pageTitle.textContent =
+      page.title;
+
+  }
+
 
   lightbox.classList.add("open");
+
 
   lightbox.setAttribute(
     "aria-hidden",
     "false"
   );
 
+
   document.body.style.overflow =
     "hidden";
+
 }
 
 
+// ==========================================
+// CLOSE LIGHTBOX
+// ==========================================
+
 function closeLightbox() {
 
+  if (!lightbox) {
+    return;
+  }
+
+
   lightbox.classList.remove("open");
+
 
   lightbox.setAttribute(
     "aria-hidden",
     "true"
   );
 
+
   document.body.style.overflow =
     "";
+
 }
 
+
+// ==========================================
+// NEXT / PREVIOUS PAGE
+// ==========================================
 
 function movePage(direction) {
 
   currentIndex =
-    (currentIndex + direction + pages.length)
-    % pages.length;
+    (
+      currentIndex +
+      direction +
+      pages.length
+    ) % pages.length;
+
 
   openLightbox(currentIndex);
+
 }
 
 
-// ==============================
+// ==========================================
 // LIGHTBOX BUTTONS
-// ==============================
+// ==========================================
 
-document
-  .getElementById("closeBtn")
-  .addEventListener(
+const closeBtn =
+  document.getElementById("closeBtn");
+
+const prevBtn =
+  document.getElementById("prevBtn");
+
+const nextBtn =
+  document.getElementById("nextBtn");
+
+
+if (closeBtn) {
+
+  closeBtn.addEventListener(
     "click",
     closeLightbox
   );
 
+}
 
-document
-  .getElementById("prevBtn")
-  .addEventListener(
+
+if (prevBtn) {
+
+  prevBtn.addEventListener(
     "click",
     () => movePage(-1)
   );
 
+}
 
-document
-  .getElementById("nextBtn")
-  .addEventListener(
+
+if (nextBtn) {
+
+  nextBtn.addEventListener(
     "click",
     () => movePage(1)
   );
 
-
-lightbox.addEventListener(
-  "click",
-  (event) => {
-
-    if (event.target === lightbox) {
-      closeLightbox();
-    }
-
-  }
-);
+}
 
 
-// ==============================
-// KEYBOARD
-// ==============================
+// Klik background untuk menutup lightbox
 
-document.addEventListener(
-  "keydown",
-  (event) => {
+if (lightbox) {
 
-    if (
-      !lightbox.classList.contains("open")
-    ) {
-      return;
-    }
-
-    if (event.key === "Escape") {
-      closeLightbox();
-    }
-
-    if (event.key === "ArrowLeft") {
-      movePage(-1);
-    }
-
-    if (event.key === "ArrowRight") {
-      movePage(1);
-    }
-
-  }
-);
-
-
-// ==============================
-// FULLSCREEN
-// ==============================
-
-document
-  .getElementById("fullscreenBtn")
-  .addEventListener(
+  lightbox.addEventListener(
     "click",
-    () => {
+    (event) => {
 
-      if (!document.fullscreenElement) {
+      if (event.target === lightbox) {
 
-        document.documentElement
-          .requestFullscreen?.();
-
-      } else {
-
-        document
-          .exitFullscreen?.();
+        closeLightbox();
 
       }
 
     }
   );
 
+}
 
-// ==============================
+
+// ==========================================
+// KEYBOARD LIGHTBOX
+// ==========================================
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (
+      !lightbox ||
+      !lightbox.classList.contains("open")
+    ) {
+      return;
+    }
+
+
+    // ESC
+
+    if (event.key === "Escape") {
+
+      closeLightbox();
+
+    }
+
+
+    // Arrow Left
+
+    if (event.key === "ArrowLeft") {
+
+      movePage(-1);
+
+    }
+
+
+    // Arrow Right
+
+    if (event.key === "ArrowRight") {
+
+      movePage(1);
+
+    }
+
+  }
+);
+
+
+// ==========================================
+// FULLSCREEN
+// ==========================================
+
+const fullscreenBtn =
+  document.getElementById("fullscreenBtn");
+
+
+if (fullscreenBtn) {
+
+  fullscreenBtn.addEventListener(
+    "click",
+    async () => {
+
+      try {
+
+        if (!document.fullscreenElement) {
+
+          await document.documentElement
+            .requestFullscreen();
+
+        } else {
+
+          await document
+            .exitFullscreen();
+
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Fullscreen tidak didukung:",
+          error
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+// ==========================================
 // DAYTIME SPECIALS
-// ==============================
+// ==========================================
 
-document
-  .getElementById("specialBtn")
-  .addEventListener(
+const specialBtn =
+  document.getElementById("specialBtn");
+
+
+if (specialBtn) {
+
+  specialBtn.addEventListener(
     "click",
     () => {
 
-      // Daytime Specials = halaman pertama
+      // Daytime Specials adalah halaman pertama
       openLightbox(0);
 
     }
   );
 
+}
 
-// ==============================
+
+// ==========================================
 // MOBILE NAVIGATION
-// ==============================
+// ==========================================
 
 const menuToggle =
   document.getElementById("menuToggle");
@@ -272,48 +401,57 @@ const nav =
   document.getElementById("nav");
 
 
-menuToggle.addEventListener(
-  "click",
-  () => {
+if (
+  menuToggle &&
+  nav
+) {
 
-    const isOpen =
-      nav.classList.toggle("open");
+  menuToggle.addEventListener(
+    "click",
+    () => {
 
-    menuToggle.setAttribute(
-      "aria-expanded",
-      isOpen
-    );
-
-  }
-);
+      const isOpen =
+        nav.classList.toggle("open");
 
 
-// Tutup navbar mobile setelah klik link
+      menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+      );
 
-nav.querySelectorAll("a").forEach(
-  (link) => {
-
-    link.addEventListener(
-      "click",
-      () => {
-
-        nav.classList.remove("open");
-
-        menuToggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-      }
-    );
-
-  }
-);
+    }
+  );
 
 
-// ==============================
-// RESERVATION
-// ==============================
+  // Tutup navbar setelah klik menu
+
+  nav
+    .querySelectorAll("a")
+    .forEach((link) => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          nav.classList.remove("open");
+
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+// ==========================================
+// RESERVATION FORM
+// ==========================================
 
 const reservationForm =
   document.getElementById(
@@ -321,104 +459,129 @@ const reservationForm =
   );
 
 
-reservationForm.addEventListener(
-  "submit",
-  function (event) {
+if (reservationForm) {
 
-    event.preventDefault();
+  reservationForm.addEventListener(
+    "submit",
+    function (event) {
 
-
-    // Ambil data form
-
-    const name =
-      document.getElementById(
-        "guestName"
-      ).value.trim();
-
-    const phone =
-      document.getElementById(
-        "guestPhone"
-      ).value.trim();
-
-    const day =
-      document.getElementById(
-        "reservationDay"
-      ).value;
-
-    const date =
-      document.getElementById(
-        "reservationDate"
-      ).value;
-
-    const time =
-      document.getElementById(
-        "reservationTime"
-      ).value;
-
-    const room =
-      document.getElementById(
-        "room"
-      ).value;
-
-    const guestCount =
-      document.getElementById(
-        "guestCount"
-      ).value;
-
-    const notes =
-      document.getElementById(
-        "notes"
-      ).value.trim();
+      event.preventDefault();
 
 
-    // Admin yang dipilih
+      // ==================================
+      // AMBIL DATA RESERVASI
+      // ==================================
 
-    const selectedAdmin =
-      document.querySelector(
-        'input[name="admin"]:checked'
-      );
-
-
-    if (!selectedAdmin) {
-
-      alert(
-        "Silakan pilih Admin Reservasi terlebih dahulu."
-      );
-
-      return;
-
-    }
+      const name =
+        document
+          .getElementById("guestName")
+          .value
+          .trim();
 
 
-    const adminNumber =
-      selectedAdmin.value;
+      const phone =
+        document
+          .getElementById("guestPhone")
+          .value
+          .trim();
 
 
-    // Format tanggal
+      const day =
+        document
+          .getElementById("reservationDay")
+          .value;
 
-    let formattedDate = date;
 
-    if (date) {
+      const date =
+        document
+          .getElementById("reservationDate")
+          .value;
 
-      const dateObject =
-        new Date(date + "T00:00:00");
 
-      formattedDate =
-        dateObject.toLocaleDateString(
-          "id-ID",
-          {
-            day: "2-digit",
-            month: "long",
-            year: "numeric"
-          }
+      const time =
+        document
+          .getElementById("reservationTime")
+          .value;
+
+
+      const room =
+        document
+          .getElementById("room")
+          .value;
+
+
+      const guestCount =
+        document
+          .getElementById("guestCount")
+          .value;
+
+
+      const notes =
+        document
+          .getElementById("notes")
+          .value
+          .trim();
+
+
+      // ==================================
+      // ADMIN RESERVASI
+      // ==================================
+
+      const selectedAdmin =
+        document.querySelector(
+          'input[name="admin"]:checked'
         );
 
-    }
+
+      if (!selectedAdmin) {
+
+        alert(
+          "Silakan pilih Admin Reservasi terlebih dahulu."
+        );
+
+        return;
+
+      }
 
 
-    // Pesan WhatsApp
+      const adminNumber =
+        selectedAdmin.value;
 
-    const message =
+
+      // ==================================
+      // FORMAT TANGGAL INDONESIA
+      // ==================================
+
+      let formattedDate =
+        date;
+
+
+      if (date) {
+
+        const dateObject =
+          new Date(
+            date + "T00:00:00"
+          );
+
+
+        formattedDate =
+          dateObject.toLocaleDateString(
+            "id-ID",
+            {
+              day: "2-digit",
+              month: "long",
+              year: "numeric"
+            }
+          );
+
+      }
+
+
+      // ==================================
+      // PESAN WHATSAPP
+      // ==================================
+
+      const message =
 `Halo Berga Coffee, saya ingin melakukan reservasi.
 
 *DATA RESERVASI*
@@ -436,30 +599,34 @@ ${notes || "-"}
 
 Mohon konfirmasi ketersediaan reservasi saya.
 
-Terima kasih.
-`;
+Terima kasih.`;
 
 
-    // Encode pesan
+      // ==================================
+      // WHATSAPP URL
+      // ==================================
 
-    const whatsappURL =
-      `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
-
-
-    // Buka WhatsApp
-
-    window.open(
-      whatsappURL,
-      "_blank"
-    );
-
-  }
-);
+      const whatsappURL =
+        `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
 
 
-// ==============================
-// SET MINIMUM RESERVATION DATE
-// ==============================
+      // Buka WhatsApp
+
+      window.open(
+        whatsappURL,
+        "_blank"
+      );
+
+    }
+  );
+
+}
+
+
+// ==========================================
+// MINIMUM RESERVATION DATE
+// Tidak bisa memilih tanggal yang sudah lewat
+// ==========================================
 
 const reservationDate =
   document.getElementById(
@@ -472,18 +639,28 @@ if (reservationDate) {
   const today =
     new Date();
 
+
   const year =
     today.getFullYear();
+
 
   const month =
     String(
       today.getMonth() + 1
-    ).padStart(2, "0");
+    ).padStart(
+      2,
+      "0"
+    );
+
 
   const day =
     String(
       today.getDate()
-    ).padStart(2, "0");
+    ).padStart(
+      2,
+      "0"
+    );
+
 
   reservationDate.min =
     `${year}-${month}-${day}`;
