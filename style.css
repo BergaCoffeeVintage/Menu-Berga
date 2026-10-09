@@ -2786,3 +2786,48 @@ body {
   }
 
 }
+
+/* ========================================
+   ABOUT BERGA - COFFEE BEAN BACKGROUND
+   ======================================== */
+
+.about-hero {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 45, 33, 0.80) 0%,
+      rgba(0, 35, 27, 0.45) 55%,
+      rgba(0, 0, 0, 0.20) 100%
+    ),
+    url("assets/bijikopi.jpg") center center / cover no-repeat;
+}
+
+/* Overlay agar tulisan tetap terbaca */
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 45, 33, 0.70) 0%,
+    rgba(0, 45, 33, 0.25) 60%,
+    rgba(0, 0, 0, 0.10) 100%
+  );
+}
+
+/* Posisi konten di atas background */
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tampilan responsif untuk HP */
+@media (max-width: 700px) {
+  .about-hero {
+    background-position: center center;
+    background-size: cover;
+  }
+}
