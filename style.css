@@ -2802,7 +2802,7 @@ body {
       rgba(0, 35, 27, 0.45) 55%,
       rgba(0, 0, 0, 0.20) 100%
     ),
-    url("assets/bijikopi.JPG") center center / cover no-repeat;
+    url("assets/bijikopi.jpg") center center / cover no-repeat;
 }
 
 /* Overlay agar tulisan tetap terbaca */
