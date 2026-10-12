@@ -3,13 +3,14 @@
    BERGA COFFEE — CUSTOMER REVIEWS
    ========================================== */
 
-const SUPABASE_URL = "https://hvicejqownqtdhfboozg.supabase.co/rest/v1/";
+const SUPABASE_URL = "https://hvicejqownqtdhfboozg.supabase.co";
 const SUPABASE_KEY = "sb_publishable_Lk2WzuuD0_bz6qm_P039Dg_I1soLC-4";
 
 const PAGE_SIZE = 5;
 
 const { createClient } = window.supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
 
 const form = document.getElementById("reviewForm");
 const nameInput = document.getElementById("reviewName");
