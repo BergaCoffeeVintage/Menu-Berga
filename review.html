@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#00563f">
+  <meta name="description" content="Customer Reviews — Berga Coffee">
+  <title>Customer Reviews | Berga Coffee</title>
+
+  <link rel="icon" type="image/png" href="assets/berga-favicon.png">
+  <link rel="stylesheet" href="reviews.css">
+</head>
+
+<body>
+  <header class="review-nav">
+    <a class="brand" href="index.html">
+      <strong>berga.</strong><small>coffee</small>
+    </a>
+    <a class="back-link" href="index.html">← BACK TO HOME</a>
+  </header>
+
+  <main class="reviews-page">
+    <section class="review-hero">
+      <span class="eyebrow">BERGA COFFEE · VINTAGE AND TIMELESS</span>
+      <h1>YOUR WORDS,<br>OUR <em>STORY.</em></h1>
+      <p>
+        Setiap cerita dan pengalamanmu berarti bagi kami.
+        Bagikan momenmu bersama Berga Coffee.
+      </p>
+
+      <div class="rating-summary">
+        <div>
+          <strong id="averageRating">—</strong>
+          <div id="averageStars" class="stars" aria-label="Rata-rata rating">
+            ☆☆☆☆☆
+          </div>
+          <span id="reviewCount">Memuat ulasan...</span>
+        </div>
+        <span class="summary-divider"></span>
+        <span class="summary-note">SHARED BY<br>OUR CUSTOMERS</span>
+      </div>
+    </section>
+
+    <section class="review-layout">
+      <div class="form-panel">
+        <span class="eyebrow">YOUR EXPERIENCE MATTERS</span>
+        <h2>Leave a Review</h2>
+        <p class="form-intro">
+          Ceritakan pengalamanmu menikmati waktu di Berga Coffee.
+        </p>
+
+        <form id="reviewForm">
+          <div class="field">
+            <label for="reviewName">NAMA</label>
+            <input
+              id="reviewName"
+              name="name"
+              type="text"
+              minlength="2"
+              maxlength="60"
+              placeholder="Nama kamu"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <fieldset class="rating-field">
+            <legend>RATING KAMU</legend>
+            <div class="star-picker" role="group" aria-label="Pilih rating">
+              <button type="button" class="star-button" data-rating="1" aria-label="1 bintang">★</button>
+              <button type="button" class="star-button" data-rating="2" aria-label="2 bintang">★</button>
+              <button type="button" class="star-button" data-rating="3" aria-label="3 bintang">★</button>
+              <button type="button" class="star-button" data-rating="4" aria-label="4 bintang">★</button>
+              <button type="button" class="star-button" data-rating="5" aria-label="5 bintang">★</button>
+            </div>
+            <span id="ratingHint">Pilih bintang 1 sampai 5</span>
+          </fieldset>
+
+          <input type="hidden" id="reviewRating" value="">
+
+          <div class="field">
+            <label for="reviewComment">CERITAKAN PENGALAMANMU</label>
+            <textarea
+              id="reviewComment"
+              name="comment"
+              rows="5"
+              minlength="3"
+              maxlength="1000"
+              placeholder="Kopi favorit, suasana tempat, pelayanan..."
+              required
+            ></textarea>
+            <span class="character-count"><span id="charCount">0</span>/1000</span>
+          </div>
+
+          <button id="submitReview" class="submit-button" type="submit">
+            SUBMIT REVIEW →
+          </button>
+
+          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+          <p class="privacy-note">
+            Ulasan yang dikirim akan langsung dapat dibaca oleh pengunjung lain.
+          </p>
+        </form>
+      </div>
+
+      <div class="reviews-panel">
+        <div class="reviews-heading">
+          <div>
+            <span class="eyebrow">THE BERGA EXPERIENCE</span>
+            <h2>Customer Stories</h2>
+          </div>
+          <span class="live-label"><span></span> LIVE REVIEWS</span>
+        </div>
+
+        <div id="reviewsList" class="reviews-list" aria-live="polite">
+          <p class="loading-text">Sedang memuat ulasan...</p>
+        </div>
+
+        <button id="loadMore" class="load-more" type="button" hidden>
+          LOAD MORE REVIEWS ↓
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="review-footer">
+    <span>BERGA COFFEE</span>
+    <span>VINTAGE AND TIMELESS</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="reviews.js"></script>
+</body>
+</html>
