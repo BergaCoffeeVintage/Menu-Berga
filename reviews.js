@@ -291,14 +291,16 @@ form.addEventListener("submit", async (event) => {
       behavior: "smooth",
       block: "start"
     });
-  } catch (error) {
-    console.error("Gagal mengirim review:", error);
+ 
+} catch (error) {
+  console.error("Gagal mengirim review:", error);
 
-    showMessage(
-      "Ulasan belum berhasil dikirim. Periksa koneksi dan pengaturan Supabase, lalu coba lagi.",
-      "error"
-    );
-  } finally {
+  showMessage(
+    `Gagal mengirim: ${error.message || "Periksa Console browser."}`,
+    "error"
+  );
+}
+ finally {
     isSubmitting = false;
     submitButton.disabled = false;
     submitButton.textContent = "SUBMIT REVIEW →";
