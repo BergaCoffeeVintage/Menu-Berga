@@ -1,7 +1,7 @@
 
 (() => {
   // GANTI dengan URL Instagram resmi Berga Coffee.
-  const INSTAGRAM_URL = "https://www.instagram.com/USERNAME/";
+  const INSTAGRAM_URL = "https://www.instagram.com/berga_coffee/";
 
   // Akses berlaku selama tab browser ini masih aktif.
   // Ini bukan bukti bahwa pengunjung sudah follow.
