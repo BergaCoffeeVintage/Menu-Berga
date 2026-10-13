@@ -37,7 +37,7 @@
 
         <a
           class="berga-gate-button"
-          href="${https://www.instagram.com/berga_coffee/?hl=en}"
+          href="${INSTAGRAM_URL}"
           target="_blank"
           rel="noopener noreferrer"
         >
